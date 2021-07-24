@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
-import 'package:magremote/screens/ReadOnlySkeleton.dart';
+import '../widgets/ReadOnlySkeleton.dart';
 
 class ReadOnlyPage extends StatefulWidget {
   @override

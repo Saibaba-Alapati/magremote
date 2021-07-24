@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/screens/EditorPage.dart';
+import 'EditorPage.dart';
 
 class IssuesPage extends StatelessWidget {
   @override

@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
-import 'package:magremote/screens/IssueDetails.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
+import 'IssueDetails.dart';
 
 class EditorPage extends StatefulWidget {
   @override
@@ -135,14 +135,12 @@ class _EditorPageState extends State<EditorPage> {
               child: quillEditor,
             ),
           ),
+          Container(child: toolbar)
         ],
       ),
     );
   }
 
-  // Renders the image picked by imagePicker from local file storage
-  // You can also upload the picked image to any server (eg : AWS s3
-  // or Firebase) and then return the uploaded image URL.
   Future<String> _onImagePickCallback(File file) async {
     // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();

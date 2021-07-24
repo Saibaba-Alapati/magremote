@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/screens/CreateProject.dart';
+import 'CreateProject.dart';
 
 class ProjectsPage extends StatefulWidget {
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'Magremote.dart';
 import 'Signup.dart';
-import 'package:magremote/services/authservice.dart';
+import '/services/authservice.dart';
 
 bool invisible = true;
 

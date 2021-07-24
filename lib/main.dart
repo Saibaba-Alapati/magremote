@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/screens/CreateProject.dart';
-import 'package:magremote/screens/EditorPage.dart';
-import 'package:magremote/screens/IssueDetails.dart';
-import 'package:magremote/screens/ReadOnly.dart';
-import 'screens/Magremote.dart';
-import 'screens/Login.dart';
-import 'screens/Home.dart';
-import 'screens/Settings.dart';
-import 'screens/Projects.dart';
-import 'screens/Issues.dart';
-import 'screens/Teammembers.dart';
-import 'screens/Signup.dart';
+import 'views/components/CategoryContainers.dart';
+import 'views/screens/CreateProject.dart';
+import 'views/screens/EditorPage.dart';
+import 'views/screens/IssueDetails.dart';
+import 'views/screens/ReadOnly.dart';
+import 'views/screens/Magremote.dart';
+import 'views/screens/Login.dart';
+import 'views/screens/Home.dart';
+import 'views/screens/Settings.dart';
+import 'views/screens/Projects.dart';
+import 'views/screens/IssuesPage.dart';
+import 'views/screens/Teammembers.dart';
+import 'views/screens/Signup.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      initialRoute: '/newissue',
+      initialRoute: '/categorycontainer',
       routes: {
         '/projects': (context) => ProjectsPage(),
         '/': (context) => Homepage(),
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/newproject': (context) => CreateProjectDialog(),
         '/newissue': (context) => EditorPage(),
         '/readonly': (context) => ReadOnlyPage(),
+        '/categorycontainer': (context) => CategoryContainer(),
       },
     );
   }

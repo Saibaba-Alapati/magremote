@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Issues.dart';
-import 'Tasks.dart';
+import 'IssuesPage.dart';
 import 'Projects.dart';
 
 class Magremote extends StatefulWidget {
@@ -31,7 +30,6 @@ class _MagremoteState extends State<Magremote> {
       body: IndexedStack(
         children: <Widget>[
           ProjectsPage(),
-          TasksPage(),
           IssuesPage(),
         ],
         index: _selectedItem,

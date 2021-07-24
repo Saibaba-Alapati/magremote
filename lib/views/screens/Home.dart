@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/screens/Projects.dart';
-import 'Issues.dart';
+import 'Projects.dart';
+import 'IssuesPage.dart';
 
 class Homepage extends StatelessWidget {
   @override
@@ -38,10 +38,6 @@ class Homepage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => ProjectsPage()),
               );
             },
-          ),
-          ListTile(
-            leading: Icon(Icons.add),
-            title: Text("Tasks"),
           ),
           ListTile(
             leading: Icon(Icons.people),
