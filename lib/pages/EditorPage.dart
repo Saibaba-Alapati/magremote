@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
-import 'package:magremote/screens/read_only_page.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
-import 'package:path/path.dart';
+import 'ReadOnly.dart';
 
 class EditorPage extends StatefulWidget {
   @override
@@ -25,7 +27,9 @@ class _EditorPageState extends State<EditorPage> {
 
   Future<void> _loadFromAssets() async {
     try {
-      final doc = Document();
+      final result = await rootBundle.loadString(
+          '/Users/saibabaalapati/Desktop/flutterpojects/magremote/assets/sample_data.json');
+      final doc = Document.fromJson(jsonDecode(result));
       setState(() {
         _controller = QuillController(
             document: doc, selection: const TextSelection.collapsed(offset: 0));
@@ -34,7 +38,7 @@ class _EditorPageState extends State<EditorPage> {
       final doc = Document()..insert(0, 'Empty asset');
       setState(() {
         _controller = QuillController(
-            document: doc, selection: TextSelection.collapsed(offset: 0));
+            document: doc, selection: const TextSelection.collapsed(offset: 0));
       });
     }
   }
@@ -107,42 +111,13 @@ class _EditorPageState extends State<EditorPage> {
           sizeSmall: const TextStyle(fontSize: 9),
         ));
     var toolbar = QuillToolbar.basic(
-      controller: _controller!,
-      onImagePickCallback: _onImagePickCallback,
-    );
+        controller: _controller!,
+        onImagePickCallback: _onImagePickCallback,
+        onVideoPickCallback: _onVideoPickCallback);
     return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Click here once editing is finished"),
-              ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return Colors.blue;
-                      else if (states.contains(MaterialState.disabled))
-                        return Colors.grey;
-                      return Colors.blue; // Use the component's default.
-                    },
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ),
-                child: Text(
-                  "Create",
-                  style: TextStyle(fontSize: 20.0),
-                ),
-              ),
-            ],
-          ),
           Expanded(
             flex: 15,
             child: Container(
@@ -151,15 +126,32 @@ class _EditorPageState extends State<EditorPage> {
               child: quillEditor,
             ),
           ),
-          Container(
-            child: toolbar,
-          ),
+          kIsWeb
+              ? Expanded(
+                  child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                  child: toolbar,
+                ))
+              : Container(child: toolbar)
         ],
       ),
     );
   }
 
+  // Renders the image picked by imagePicker from local file storage
+  // You can also upload the picked image to any server (eg : AWS s3
+  // or Firebase) and then return the uploaded image URL.
   Future<String> _onImagePickCallback(File file) async {
+    // Copies the picked file from temporary cache to applications directory
+    final appDocDir = await getApplicationDocumentsDirectory();
+    final copiedFile =
+        await file.copy('${appDocDir.path}/${basename(file.path)}');
+    return copiedFile.path.toString();
+  }
+
+  Future<String> _onVideoPickCallback(File file) async {
+    // Copies the picked file from temporary cache to applications directory
     final appDocDir = await getApplicationDocumentsDirectory();
     final copiedFile =
         await file.copy('${appDocDir.path}/${basename(file.path)}');

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magremote/pages/EditorPage.dart';
+import 'package:magremote/pages/ReadOnly.dart';
 import 'package:magremote/screens/ForIssue.dart';
 import 'package:magremote/screens/CreateProject.dart';
 import 'screens/Magremote.dart';
@@ -13,6 +15,7 @@ import 'screens/Signup.dart';
 
 void main() {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      initialRoute: '/issues',
+      initialRoute: '/newissue',
       routes: {
         '/projects': (context) => ProjectsPage(),
         '/': (context) => Homepage(),
@@ -50,6 +53,8 @@ class MyApp extends StatelessWidget {
         '/magremote': (context) => Magremote(),
         '/createissue': (context) => NextScreen(),
         '/newproject': (context) => CreateProject(),
+        '/newissue': (context) => EditorPage(),
+        '/readonly': (context) => ReadOnlyPage(),
       },
     );
   }
