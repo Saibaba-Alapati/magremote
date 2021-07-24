@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magremote/screens/Projects.dart';
 import 'Issues.dart';
 
 class Homepage extends StatelessWidget {
@@ -31,10 +32,12 @@ class Homepage extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.folder),
             title: Text("Projects"),
-          ),
-          ListTile(
-            leading: Icon(Icons.event),
-            title: Text("Events"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProjectsPage()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.add),

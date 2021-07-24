@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
+import 'package:magremote/screens/IssueDetails.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
-import 'ReadOnly.dart';
 
 class EditorPage extends StatefulWidget {
   @override
@@ -28,7 +27,8 @@ class _EditorPageState extends State<EditorPage> {
   Future<void> _loadFromAssets() async {
     try {
       final result = await rootBundle.loadString(
-          '/Users/saibabaalapati/Desktop/flutterpojects/magremote/assets/sample_data.json');
+        '/Users/saibabaalapati/Desktop/magremote/assets/sample_data.json',
+      );
       final doc = Document.fromJson(jsonDecode(result));
       setState(() {
         _controller = QuillController(
@@ -57,13 +57,22 @@ class _EditorPageState extends State<EditorPage> {
         title: const Text(
           'Flutter Quill',
         ),
-        actions: [],
-      ),
-      drawer: Container(
-        constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
-        color: Colors.grey.shade800,
-        child: _buildMenuBar(context),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => IssueDetails(),
+                ),
+              );
+            },
+            child: const Text('Next'),
+          ),
+        ],
       ),
       body: RawKeyboardListener(
         focusNode: FocusNode(),
@@ -126,14 +135,6 @@ class _EditorPageState extends State<EditorPage> {
               child: quillEditor,
             ),
           ),
-          kIsWeb
-              ? Expanded(
-                  child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-                  child: toolbar,
-                ))
-              : Container(child: toolbar)
         ],
       ),
     );
@@ -156,46 +157,5 @@ class _EditorPageState extends State<EditorPage> {
     final copiedFile =
         await file.copy('${appDocDir.path}/${basename(file.path)}');
     return copiedFile.path.toString();
-  }
-
-  Widget _buildMenuBar(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    const itemStyle = TextStyle(
-      color: Colors.white,
-      fontSize: 18,
-      fontWeight: FontWeight.bold,
-    );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Divider(
-          thickness: 2,
-          color: Colors.white,
-          indent: size.width * 0.1,
-          endIndent: size.width * 0.1,
-        ),
-        ListTile(
-          title: const Center(child: Text('Read only demo', style: itemStyle)),
-          dense: true,
-          visualDensity: VisualDensity.compact,
-          onTap: _readOnly,
-        ),
-        Divider(
-          thickness: 2,
-          color: Colors.white,
-          indent: size.width * 0.1,
-          endIndent: size.width * 0.1,
-        ),
-      ],
-    );
-  }
-
-  void _readOnly() {
-    Navigator.push(
-      super.context,
-      MaterialPageRoute(
-        builder: (context) => ReadOnlyPage(),
-      ),
-    );
   }
 }

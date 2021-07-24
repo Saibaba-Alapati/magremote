@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magremote/screens/CreateProject.dart';
 
 class ProjectsPage extends StatefulWidget {
   @override
@@ -31,10 +32,11 @@ class _ProjectsPageState extends State<ProjectsPage> {
                     size: 40,
                   ),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => CreateIssuePage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreateProjectDialog()),
+                    );
                   },
                 ))
           ],

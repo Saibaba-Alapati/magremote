@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:magremote/screens/ReadOnlySkeleton.dart';
@@ -17,7 +16,7 @@ class _ReadOnlyPageState extends State<ReadOnlyPage> {
   Widget build(BuildContext context) {
     return ReadOnlySkeleton(
       documentFilename:
-          '/Users/saibabaalapati/Desktop/flutterpojects/magremote/assets/sample_data.json',
+          '/Users/saibabaalapati/Desktop/magremote/assets/sample_data.json',
       builder: _buildContent,
       showToolbar: _edit == true,
       floatingActionButton: FloatingActionButton.extended(

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/screens/EditorPage.dart';
-import 'package:magremote/screens/ReadOnly.dart';
-import 'package:magremote/screens/ForIssue.dart';
 import 'package:magremote/screens/CreateProject.dart';
+import 'package:magremote/screens/EditorPage.dart';
+import 'package:magremote/screens/IssueDetails.dart';
+import 'package:magremote/screens/ReadOnly.dart';
 import 'screens/Magremote.dart';
 import 'screens/Login.dart';
 import 'screens/Home.dart';
 import 'screens/Settings.dart';
 import 'screens/Projects.dart';
 import 'screens/Issues.dart';
-import 'screens/Events.dart';
 import 'screens/Teammembers.dart';
 import 'screens/Signup.dart';
 
@@ -45,14 +44,13 @@ class MyApp extends StatelessWidget {
         '/projects': (context) => ProjectsPage(),
         '/': (context) => Homepage(),
         '/issues': (context) => IssuesPage(),
-        '/events': (context) => EventsPage(),
         '/teammembers': (context) => TeamMembersPage(),
         '/settings': (context) => SettingsPage(),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/magremote': (context) => Magremote(),
-        '/createissue': (context) => NextScreen(),
-        '/newproject': (context) => CreateProject(),
+        '/issuedetails': (context) => IssueDetails(),
+        '/newproject': (context) => CreateProjectDialog(),
         '/newissue': (context) => EditorPage(),
         '/readonly': (context) => ReadOnlyPage(),
       },

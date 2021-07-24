@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Events.dart';
 import 'Issues.dart';
 import 'Tasks.dart';
 import 'Projects.dart';
@@ -32,7 +31,6 @@ class _MagremoteState extends State<Magremote> {
       body: IndexedStack(
         children: <Widget>[
           ProjectsPage(),
-          EventsPage(),
           TasksPage(),
           IssuesPage(),
         ],

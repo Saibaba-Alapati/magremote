@@ -5,12 +5,12 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 import 'package:flutter/cupertino.dart';
 
-class NextScreen extends StatefulWidget {
+class IssueDetails extends StatefulWidget {
   @override
-  _NextScreenState createState() => _NextScreenState();
+  _IssueDetailsState createState() => _IssueDetailsState();
 }
 
-class _NextScreenState extends State<NextScreen> {
+class _IssueDetailsState extends State<IssueDetails> {
   var title;
   String _date = "Not set";
   String _time = "Not set";
@@ -46,7 +46,7 @@ class _NextScreenState extends State<NextScreen> {
                   color: Colors.white,
                 ),
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red)),
+                    borderSide: BorderSide(color: Colors.blue)),
                 contentPadding: EdgeInsets.all(5.0),
               ),
               onChanged: (val) {
@@ -67,7 +67,7 @@ class _NextScreenState extends State<NextScreen> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: Colors.red)))),
+                                    side: BorderSide(color: Colors.blue)))),
                     onPressed: () {
                       DatePicker.showDatePicker(context,
                           theme: DatePickerTheme(
@@ -126,7 +126,7 @@ class _NextScreenState extends State<NextScreen> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: Colors.red)))),
+                                    side: BorderSide(color: Colors.blue)))),
                     onPressed: () {
                       DatePicker.showTimePicker(context,
                           theme: DatePickerTheme(
@@ -186,7 +186,7 @@ class _NextScreenState extends State<NextScreen> {
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
-                          side: BorderSide(color: Colors.red)))),
+                          side: BorderSide(color: Colors.blue)))),
               onPressed: () {
                 _priorityModalBottomSheet(context);
               },
@@ -224,23 +224,13 @@ class _NextScreenState extends State<NextScreen> {
           Padding(
             padding: EdgeInsets.fromLTRB(70, 15, 70, 15),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(70, 15, 70, 15),
-            child: FractionallySizedBox(
-              widthFactor: 0.60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    elevation: 4.0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                    primary: Colors.purple,
-                    textStyle:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                child: Text("create Issue"),
-                onPressed: () {},
-              ),
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: const TextStyle(fontSize: 20),
             ),
-          )
+            onPressed: () {},
+            child: const Text('Create'),
+          ),
         ],
       ),
     );
@@ -256,7 +246,7 @@ class _NextScreenState extends State<NextScreen> {
                 new ListTile(
                     leading: new Icon(
                       Icons.arrow_upward,
-                      color: Colors.red[900],
+                      color: Colors.blue[900],
                     ),
                     title: new Text('Highest'),
                     onTap: () {
@@ -268,7 +258,7 @@ class _NextScreenState extends State<NextScreen> {
                 new ListTile(
                   leading: new Icon(
                     Icons.arrow_upward,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                   title: new Text('High'),
                   onTap: () {
@@ -329,12 +319,12 @@ Widget iconreturn(String text) {
     case 'Highest':
       return Icon(
         Icons.arrow_upward_rounded,
-        color: Colors.red[900],
+        color: Colors.blue[900],
       );
     case 'High':
       return Icon(
         Icons.arrow_upward_rounded,
-        color: Colors.red,
+        color: Colors.blue,
       );
     case 'Medium':
       return Icon(

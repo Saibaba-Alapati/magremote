@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magremote/screens/EditorPage.dart';
 
 class TasksPage extends StatefulWidget {
   @override
@@ -31,21 +32,16 @@ class _TasksPageState extends State<TasksPage> {
                   size: 40,
                 ),
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => CreateIssuePage()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EditorPage()),
+                  );
                 },
               ))
         ],
       ),
       body: Padding(
-        padding: new EdgeInsets.fromLTRB(
-          5,
-          0,
-          5,
-          0,
-        ),
+        padding: new EdgeInsets.fromLTRB(5, 0, 5, 0),
         child: Center(
           child: Text(
             "Your tasks of related project \n will appear here.",
