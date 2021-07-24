@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magremote/pages/EditorPage.dart';
-import 'package:magremote/pages/ReadOnly.dart';
+import 'package:magremote/screens/EditorPage.dart';
+import 'package:magremote/screens/ReadOnly.dart';
 import 'package:magremote/screens/ForIssue.dart';
 import 'package:magremote/screens/CreateProject.dart';
 import 'screens/Magremote.dart';
