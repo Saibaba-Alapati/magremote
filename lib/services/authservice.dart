@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -7,12 +9,10 @@ class AuthService {
 
   login(username, password) async {
     try {
-      return await dio.post('https://magremote.herokuapp.com/authenticate',
-          data: {
-            "username": username,
-            "password": password,
-          },
+      final response = await dio.get(
+          'http://localhost:8000/user/login?username=$username&password=$password',
           options: Options(contentType: Headers.formUrlEncodedContentType));
+      return json.decode(response.toString());
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -25,7 +25,7 @@ class AuthService {
   }
 
   addUser(firstname, lastname, username, gender, password, email) async {
-    return await dio.post('https://magremote.herokuapp.com/adduser',
+    return await dio.post('http://localhost:8000/user/signup/',
         data: {
           "firstname": firstname,
           "lastname": lastname,

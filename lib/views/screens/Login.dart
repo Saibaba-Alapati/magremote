@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:magremote/viewModels/LoginModel.dart';
 import 'Magremote.dart';
 import 'Signup.dart';
-import '/services/authservice.dart';
+import '../../services/Authservice.dart';
 
 bool invisible = true;
 
@@ -83,8 +84,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Image.asset(
-            "assets/login.png",
-            height: size.height * 0.30,
+            "/Users/saibabaalapati/Desktop/magremote/assets/login.png",
+            height: size.height * 0.3,
           ),
           SizedBox(height: size.height * 0.01),
           Padding(
@@ -161,8 +162,9 @@ class _LoginPageState extends State<LoginPage> {
             child: TextButton(
               onPressed: () {
                 AuthService().login(username, password).then((val) {
-                  if (val.data['success']) {
-                    token = val.data['token'];
+                  Login loginResults = Login.fromJson(val["results"][0]);
+                  print(loginResults.email);
+                  if (loginResults.id > 0) {
                     Fluttertoast.showToast(
                         msg: 'Authenticated',
                         gravity: ToastGravity.BOTTOM,
@@ -192,7 +194,6 @@ class _LoginPageState extends State<LoginPage> {
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.red),
                   ),
                 ),
               ),
@@ -233,7 +234,6 @@ class _LoginPageState extends State<LoginPage> {
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.red),
                   ),
                 ),
               ),

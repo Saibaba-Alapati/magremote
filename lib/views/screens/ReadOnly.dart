@@ -3,20 +3,22 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import '../widgets/ReadOnlySkeleton.dart';
 
 class ReadOnlyPage extends StatefulWidget {
+  final String content;
+  const ReadOnlyPage({
+    required this.content,
+    Key? key,
+  }) : super(key: key);
   @override
   _ReadOnlyPageState createState() => _ReadOnlyPageState();
 }
 
 class _ReadOnlyPageState extends State<ReadOnlyPage> {
   final FocusNode _focusNode = FocusNode();
-
   bool _edit = false;
-
   @override
   Widget build(BuildContext context) {
     return ReadOnlySkeleton(
-      documentFilename:
-          '/Users/saibabaalapati/Desktop/magremote/assets/sample_data.json',
+      content: '${widget.content}',
       builder: _buildContent,
       showToolbar: _edit == true,
       floatingActionButton: FloatingActionButton.extended(

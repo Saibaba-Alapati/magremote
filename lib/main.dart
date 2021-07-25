@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'views/components/CategoryContainers.dart';
+import '/views/screens/ProjectPage.dart';
 import 'views/screens/CreateProject.dart';
 import 'views/screens/EditorPage.dart';
 import 'views/screens/IssueDetails.dart';
-import 'views/screens/ReadOnly.dart';
 import 'views/screens/Magremote.dart';
 import 'views/screens/Login.dart';
-import 'views/screens/Home.dart';
-import 'views/screens/Settings.dart';
-import 'views/screens/Projects.dart';
+import 'views/screens/HomePage.dart';
+import 'views/screens/settings.dart';
+import 'views/screens/ProjectsPage.dart';
 import 'views/screens/IssuesPage.dart';
 import 'views/screens/Teammembers.dart';
 import 'views/screens/Signup.dart';
@@ -40,21 +39,20 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      initialRoute: '/categorycontainer',
+      initialRoute: '/login',
       routes: {
-        '/projects': (context) => ProjectsPage(),
-        '/': (context) => Homepage(),
-        '/issues': (context) => IssuesPage(),
-        '/teammembers': (context) => TeamMembersPage(),
-        '/settings': (context) => SettingsPage(),
+        '/': (context) => HomePage(),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
-        '/magremote': (context) => Magremote(),
-        '/issuedetails': (context) => IssueDetails(),
-        '/newproject': (context) => CreateProjectDialog(),
+        '/issues': (context) => IssuesPage(),
         '/newissue': (context) => EditorPage(),
-        '/readonly': (context) => ReadOnlyPage(),
-        '/categorycontainer': (context) => CategoryContainer(),
+        '/issuedetails': (context) => IssueDetails(),
+        '/projects': (context) => ProjectsPage(),
+        '/newproject': (context) => CreateProjectDialog(),
+        '/projectpages': (context) => ProjectPage(),
+        '/teammembers': (context) => TeamMembersPage(),
+        '/settings': (context) => SettingsPage(),
+        '/magremote': (context) => Magremote(),
       },
     );
   }

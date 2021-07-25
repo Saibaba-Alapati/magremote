@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '/services/authservice.dart';
+import '../../services/Authservice.dart';
 import 'Magremote.dart';
 
 bool invisible = true;
@@ -49,7 +49,7 @@ class _SignupPageState extends State<SignupPage> {
           ),
           SizedBox(height: size.height * 0.02),
           Image.asset(
-            "assets/login.png",
+            "/Users/saibabaalapati/Desktop/magremote/assets/login.png",
             height: size.height * 0.30,
           ),
           SizedBox(height: size.height * 0.02),
@@ -143,7 +143,7 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius:
                           BorderRadius.all(const Radius.circular(10.0)))),
               value: _gender,
-              items: ["Male", "Female"]
+              items: ["male", "female", "other"]
                   .map(
                     (label) => DropdownMenuItem(
                       child: Text(

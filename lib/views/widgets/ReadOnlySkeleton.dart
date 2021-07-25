@@ -10,14 +10,14 @@ typedef DemoContentBuilder = Widget Function(
 // Common scaffold for all examples.
 class ReadOnlySkeleton extends StatefulWidget {
   const ReadOnlySkeleton({
-    required this.documentFilename,
+    required this.content,
     required this.builder,
     this.actions,
     this.showToolbar = true,
     this.floatingActionButton,
     Key? key,
   }) : super(key: key);
-  final String documentFilename;
+  final String content;
   final DemoContentBuilder builder;
   final List<Widget>? actions;
   final Widget? floatingActionButton;
@@ -50,8 +50,7 @@ class _ReadOnlySkeletonState extends State<ReadOnlySkeleton> {
 
   Future<void> _loadFromAssets() async {
     try {
-      final result = await rootBundle.loadString('${widget.documentFilename}');
-      final doc = Document.fromJson(jsonDecode(result));
+      final doc = Document.fromJson(jsonDecode('${widget.content}'));
       setState(() {
         _controller = QuillController(
             document: doc, selection: const TextSelection.collapsed(offset: 0));

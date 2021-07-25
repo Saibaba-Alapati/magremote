@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'IssuesPage.dart';
-import 'Projects.dart';
+import 'ProjectsPage.dart';
 
 class Magremote extends StatefulWidget {
   @override
