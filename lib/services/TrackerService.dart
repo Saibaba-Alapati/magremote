@@ -1,16 +1,16 @@
-// import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class ProjectService {
+class TrackerService {
   Dio dio = new Dio();
-  createProject(values) async {
+  createTracker(values) async {
     try {
       return await dio.post(
-          'http://localhost:8000/api/project/${values.userId}/create',
-          data: {values});
+          'http://localhost:8000/api/tracker/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.categorycontainerId}/create',
+          data: {
+            "content": values.content,
+          });
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -22,43 +22,13 @@ class ProjectService {
     }
   }
 
-  getAllProject(values) async {
-    try {
-      return await dio.post(
-          'http://localhost:8000/api/project/${values.userId}/getall',
-          data: {values});
-    } on DioError catch (e) {
-      Fluttertoast.showToast(
-          msg: e.response!.data['msg'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
-
-  getProject(values) async {
-    try {
-      return await dio.post(
-          'http://localhost:8000/api/project/${values.userId}/get',
-          data: {values});
-    } on DioError catch (e) {
-      Fluttertoast.showToast(
-          msg: e.response!.data['msg'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
-
-  updateProject(values) async {
+  updateTracker(values) async {
     try {
       return await dio.put(
-          'http://localhost:8000/api/project/${values.userId}/update',
-          data: {values});
+          'http://localhost:8000/api/tracker/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.categorycontainerId}/${values.id}/update',
+          data: {
+            "content": values.content,
+          });
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -70,11 +40,10 @@ class ProjectService {
     }
   }
 
-  joinProject(values) async {
+  deleteTracker(values) async {
     try {
-      return await dio.post(
-          'http://localhost:8000/api/project/${values.userId}/join',
-          data: {values});
+      return await dio.delete(
+          'http://localhost:8000/api/tracker/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.categorycontainerId}/delete');
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -86,25 +55,25 @@ class ProjectService {
     }
   }
 
-  deleteProject(values) async {
-    try {
-      return await dio
-          .delete('http://localhost:8000/api/project/${values.userId}/delete');
-    } on DioError catch (e) {
-      Fluttertoast.showToast(
-          msg: e.response!.data['msg'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
-
-  userAccessCheck(values) async {
+  getAllTrackerComments(values) async {
     try {
       return await dio.get(
-          'http://localhost:8000/api/project/${values.userId}/useraccesscheck');
+          'http://localhost:8000/api/tracker/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.categorycontainerId}/${values.id}/getall');
+    } on DioError catch (e) {
+      Fluttertoast.showToast(
+          msg: e.response!.data['msg'],
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
+
+  getTracker(values) async {
+    try {
+      return await dio.get(
+          'http://localhost:8000/api/tracker/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.categorycontainerId}/get');
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],

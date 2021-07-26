@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class TrackerContainerService {
+class CategoryContainerService {
   Dio dio = new Dio();
-  createTrackerContainer(values) async {
+  createCategoryContainer(values) async {
     try {
       return await dio.post(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/create',
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/create',
           data: {values});
     } on DioError catch (e) {
       Fluttertoast.showToast(
@@ -20,10 +20,10 @@ class TrackerContainerService {
     }
   }
 
-  joinTrackerContainer(values) async {
+  deleteCCwithTrackers(values) async {
     try {
       return await dio.post(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/join',
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/deleteccwithtrackers',
           data: {values});
     } on DioError catch (e) {
       Fluttertoast.showToast(
@@ -36,10 +36,10 @@ class TrackerContainerService {
     }
   }
 
-  deleteTrackerContainerandContent(values) async {
+  deleteAllTrackersFromCC(values) async {
     try {
       return await dio.delete(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/deletetcandcontents',
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/deletealltrackersfromcc',
           data: {values});
     } on DioError catch (e) {
       Fluttertoast.showToast(
@@ -52,10 +52,10 @@ class TrackerContainerService {
     }
   }
 
-  updateTrackerContainer(values) async {
+  updateCategoryContainer(values) async {
     try {
       return await dio.put(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/${values.id}/update',
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.id}/update',
           data: {values});
     } on DioError catch (e) {
       Fluttertoast.showToast(
@@ -68,10 +68,10 @@ class TrackerContainerService {
     }
   }
 
-  deleteTrackerContainer(values) async {
+  deleteCategoryContainer(values) async {
     try {
       return await dio.delete(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/delete');
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/delete');
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -83,10 +83,10 @@ class TrackerContainerService {
     }
   }
 
-  findAllCCofTC(values) async {
+  findAllTrackersofCC(values) async {
     try {
       return await dio.get(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/${values.id}/getallcc');
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.id}/getalltrackers');
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -98,10 +98,10 @@ class TrackerContainerService {
     }
   }
 
-  userAccessCheck(values) async {
+  moveTrackerofCC(values) async {
     try {
-      return await dio.get(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/checkaccess');
+      return await dio.put(
+          'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/${values.id}/movetrackerofcc');
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -113,33 +113,18 @@ class TrackerContainerService {
     }
   }
 
-  findOneTrackerContainer(values) async {
-    try {
-      return await dio.get(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/get');
-    } on DioError catch (e) {
-      Fluttertoast.showToast(
-          msg: e.response!.data['msg'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
-
-  findAllContainersRelatedToUser(values) async {
-    try {
-      return await dio.get(
-          'http://localhost:8000/api/trackercontainer/${values.userId}/${values.projectId}/getalltcofuser');
-    } on DioError catch (e) {
-      Fluttertoast.showToast(
-          msg: e.response!.data['msg'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
+  // getCategoryContainer(values) async {
+  //   try {
+  //     return await dio.get(
+  //         'http://localhost:8000/api/categorycontainer/${values.userId}/${values.projectId}/${values.trackercontainerId}/get');
+  //   } on DioError catch (e) {
+  //     Fluttertoast.showToast(
+  //         msg: e.response!.data['msg'],
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.BOTTOM,
+  //         backgroundColor: Colors.red,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0);
+  //   }
+  // }
 }
