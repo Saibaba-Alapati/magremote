@@ -8,7 +8,7 @@ class AuthService {
   login(username, password) async {
     try {
       return await dio.get(
-          'http://localhost:8000/user/login?username=$username&password=$password',
+          'http://localhost:8000/api/user/login?username=$username&password=$password',
           options: Options(contentType: Headers.formUrlEncodedContentType));
     } on DioError catch (e) {
       Fluttertoast.showToast(
@@ -22,7 +22,7 @@ class AuthService {
   }
 
   addUser(values) async {
-    return await dio.post('http://localhost:8000/user/signup/',
+    return await dio.post('http://localhost:8000/api/user/signup/',
         data: {values},
         options: Options(contentType: Headers.formUrlEncodedContentType));
   }

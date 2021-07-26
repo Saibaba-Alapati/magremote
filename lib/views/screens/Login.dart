@@ -169,6 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                   int id =
                       (loginResults.id != null) ? (loginResults.id) as int : -1;
                   if (id > 0) {
+                    // ignore: invalid_use_of_visible_for_testing_member
                     SharedPreferences.setMockInitialValues({});
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();

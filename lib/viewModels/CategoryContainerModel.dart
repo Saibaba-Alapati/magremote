@@ -1,25 +1,29 @@
 // To parse this JSON data, do
 //
-//     final project = projectFromJson(jsonString);
+//     final categoryContainer = categoryContainerFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Project> projectFromJson(String str) {
+import 'package:dio/dio.dart';
+
+List<CategoryContainer> userFromJson(Response<dynamic> str) {
   final value = json.decode(str.toString())["results"];
-  List<Project> projects = [];
+  List<CategoryContainer> categorycontainers = [];
   for (var item in value) {
-    projects.add(Project.fromJson(item));
+    categorycontainers.add(CategoryContainer.fromJson(item));
   }
-  return projects;
+  return categorycontainers;
 }
 
-String projectToJson(List<Project> data) =>
+String categoryContainerToJson(List<CategoryContainer> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Project {
-  Project({
+class CategoryContainer {
+  CategoryContainer({
     this.id,
     required this.creatorId,
+    required this.trackercontainerId,
+    required this.projectId,
     required this.name,
     required this.description,
     this.createdAt,
@@ -28,14 +32,19 @@ class Project {
 
   int? id;
   int creatorId;
+  int trackercontainerId;
+  int projectId;
   String name;
   String description;
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  factory Project.fromJson(Map<String, dynamic> json) => Project(
+  factory CategoryContainer.fromJson(Map<String, dynamic> json) =>
+      CategoryContainer(
         id: json["id"],
         creatorId: json["creator_id"],
+        trackercontainerId: json["trackercontainer_id"],
+        projectId: json["project_id"],
         name: json["name"],
         description: json["description"],
         createdAt: DateTime.parse(json["created_at"]),
@@ -45,6 +54,8 @@ class Project {
   Map<String, dynamic> toJson() => {
         "id": id,
         "creator_id": creatorId,
+        "trackercontainer_id": trackercontainerId,
+        "project_id": projectId,
         "name": name,
         "description": description,
         "created_at": createdAt!.toIso8601String(),
