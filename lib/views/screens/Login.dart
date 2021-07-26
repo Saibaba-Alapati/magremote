@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:magremote/viewModels/LoginModel.dart';
+import 'package:magremote/viewModels/UserModel.dart';
 import 'Magremote.dart';
 import 'Signup.dart';
 import '../../services/Authservice.dart';
@@ -163,16 +163,21 @@ class _LoginPageState extends State<LoginPage> {
             child: TextButton(
               onPressed: () {
                 AuthService().login(username, password).then((val) async {
-                  Login loginResults = Login.fromJson(val["results"][0]);
-                  print(loginResults.email);
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.setString('username', loginResults.username);
-                  prefs.setString('firstname', loginResults.firstname);
-                  prefs.setString('lastname', loginResults.lastname);
-                  prefs.setString('email', loginResults.email);
-                  prefs.setInt('user_id', loginResults.id);
-                  if (loginResults.id > 0) {
+                  List<User> results = userFromJson(val);
+                  User loginResults = results[0];
+                  // print(loginResults.email);
+                  int id =
+                      (loginResults.id != null) ? (loginResults.id) as int : -1;
+                  if (id > 0) {
+                    SharedPreferences.setMockInitialValues({});
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+
+                    prefs.setString('username', loginResults.username);
+                    prefs.setString('firstname', loginResults.firstname);
+                    prefs.setString('lastname', loginResults.lastname);
+                    prefs.setString('email', loginResults.email);
+                    prefs.setInt('user_id', id);
                     Fluttertoast.showToast(
                         msg: 'Authenticated',
                         gravity: ToastGravity.BOTTOM,

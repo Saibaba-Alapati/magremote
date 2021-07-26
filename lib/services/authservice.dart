@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,10 +7,9 @@ class AuthService {
 
   login(username, password) async {
     try {
-      final response = await dio.get(
+      return await dio.get(
           'http://localhost:8000/user/login?username=$username&password=$password',
           options: Options(contentType: Headers.formUrlEncodedContentType));
-      return json.decode(response.toString());
     } on DioError catch (e) {
       Fluttertoast.showToast(
           msg: e.response!.data['msg'],
@@ -24,16 +21,9 @@ class AuthService {
     }
   }
 
-  addUser(firstname, lastname, username, gender, password, email) async {
+  addUser(values) async {
     return await dio.post('http://localhost:8000/user/signup/',
-        data: {
-          "firstname": firstname,
-          "lastname": lastname,
-          "username": username,
-          "gender": gender,
-          "password": password,
-          "email": email,
-        },
+        data: {values},
         options: Options(contentType: Headers.formUrlEncodedContentType));
   }
 }

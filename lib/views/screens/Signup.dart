@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:magremote/viewModels/UserModel.dart';
 import '../../services/Authservice.dart';
 import 'Magremote.dart';
 
@@ -233,10 +234,16 @@ class _SignupPageState extends State<SignupPage> {
             padding: new EdgeInsets.fromLTRB(90, 10, 90, 20),
             child: ElevatedButton(
               onPressed: () {
-                AuthService()
-                    .addUser(
-                        firstname, lastname, username, gender, password, email)
-                    .then((val) {
+                User newUser = User(
+                  firstname: firstname,
+                  lastname: lastname,
+                  username: username,
+                  gender: gender,
+                  email: email,
+                  password: password,
+                );
+                final values = newUser.toJson();
+                AuthService().addUser(values).then((val) {
                   Fluttertoast.showToast(
                       msg: val.data['msg'],
                       toastLength: Toast.LENGTH_SHORT,
