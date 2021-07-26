@@ -4,6 +4,7 @@ import 'package:magremote/viewModels/LoginModel.dart';
 import 'Magremote.dart';
 import 'Signup.dart';
 import '../../services/Authservice.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 bool invisible = true;
 
@@ -161,9 +162,16 @@ class _LoginPageState extends State<LoginPage> {
             padding: new EdgeInsets.fromLTRB(90, 10, 90, 12),
             child: TextButton(
               onPressed: () {
-                AuthService().login(username, password).then((val) {
+                AuthService().login(username, password).then((val) async {
                   Login loginResults = Login.fromJson(val["results"][0]);
                   print(loginResults.email);
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setString('username', loginResults.username);
+                  prefs.setString('firstname', loginResults.firstname);
+                  prefs.setString('lastname', loginResults.lastname);
+                  prefs.setString('email', loginResults.email);
+                  prefs.setInt('user_id', loginResults.id);
                   if (loginResults.id > 0) {
                     Fluttertoast.showToast(
                         msg: 'Authenticated',
