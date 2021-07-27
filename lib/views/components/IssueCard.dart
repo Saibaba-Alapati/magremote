@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:magremote/views/screens/ReadOnly.dart';
+import 'package:magremote/views/screens/ReadTrackerPage.dart';
 
 class IssueCard extends StatefulWidget {
   final issuename;
@@ -30,7 +30,7 @@ class _IssueCardState extends State<IssueCard> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ReadOnlyPage(content: '${widget.doc}'),
+              builder: (context) => ReadTrackerPage(content: '${widget.doc}'),
             ),
           );
         },

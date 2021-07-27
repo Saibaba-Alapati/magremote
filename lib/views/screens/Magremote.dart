@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magremote/views/screens/HomePage.dart';
+import 'package:magremote/views/screens/TeammembersPage.dart';
 import 'IssuesPage.dart';
 import 'ProjectsPage.dart';
 
@@ -12,13 +14,13 @@ class _MagremoteState extends State<Magremote> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white10,
       bottomNavigationBar: CustomBottomNavigationBar(
         iconList: [
-          Icons.folder_rounded,
-          Icons.event_available_rounded,
-          Icons.assignment_rounded,
-          Icons.report_problem_rounded,
+          Icons.home_max_outlined,
+          Icons.account_tree_outlined,
+          Icons.check_box_outlined,
+          Icons.notifications_outlined,
+          Icons.account_circle_outlined
         ],
         onChange: (val) {
           setState(() {
@@ -29,8 +31,10 @@ class _MagremoteState extends State<Magremote> {
       ),
       body: IndexedStack(
         children: <Widget>[
+          HomePage(),
           ProjectsPage(),
           IssuesPage(),
+          TeamMembersPage(),
         ],
         index: _selectedItem,
       ),
@@ -67,8 +71,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     for (var i = 0; i < _iconList.length; i++) {
       _navBarItemList.add(buildNavBarItem(_iconList[i], i));
     }
-    return Row(
-      children: _navBarItemList,
+    return Container(
+      height: 90.0,
+      margin: const EdgeInsets.only(bottom: 6.0), //Same as `blurRadius` i guess
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5.0),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 6.0,
+          ),
+        ],
+      ),
+      child: Row(
+        children: _navBarItemList,
+      ),
     );
   }
 
@@ -83,23 +102,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       child: Container(
         height: 90,
         width: MediaQuery.of(context).size.width / _iconList.length,
-        decoration: index == _selectedIndex
-            ? BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(width: 4, color: Colors.red),
-                ),
-                gradient: LinearGradient(colors: [
-                  Colors.green.withOpacity(0.3),
-                  Colors.green.withOpacity(0.015)
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
-            : BoxDecoration(),
         child: Icon(
           icon,
           size: 30,
-          color: index == _selectedIndex ? Colors.redAccent : Colors.grey,
+          color: index == _selectedIndex ? Colors.blue : Colors.grey,
         ),
       ),
     );
   }
 }
-//Need to implement focused menue-https://retroportalstudio.medium.com/auto-generate-flutter-custom-paint-code-flutter-shape-maker-be51e41daf89

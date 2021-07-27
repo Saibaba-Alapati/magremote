@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import '/views/screens/ProjectPage.dart';
+import 'package:magremote/views/screens/ReadTrackerPage.dart';
+import 'views/screens/ProjectPage.dart';
 import 'views/screens/CreateProject.dart';
 import 'views/screens/EditorPage.dart';
 import 'views/screens/IssueDetails.dart';
 import 'views/screens/Magremote.dart';
-import 'views/screens/Login.dart';
+import 'views/screens/LoginPage.dart';
 import 'views/screens/HomePage.dart';
-import 'views/screens/settings.dart';
+import 'views/screens/AccountPage.dart';
 import 'views/screens/ProjectsPage.dart';
 import 'views/screens/IssuesPage.dart';
-import 'views/screens/Teammembers.dart';
-import 'views/screens/Signup.dart';
+import 'views/screens/TeammembersPage.dart';
+import 'views/screens/SignupPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,24 +23,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        // Define the default brightness and colors.
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         primaryColor: Colors.lightBlue[800],
-        // ignore: deprecated_member_use
         accentColor: Colors.cyan[600],
-
-        // Define the default font family.
-        fontFamily: 'Georgia',
-
-        // Define the default TextTheme. Use this to specify the default
-        // text styling for headlines, titles, bodies of text, and more.
+        fontFamily: 'Roboto',
         textTheme: TextTheme(
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      initialRoute: '/login',
+      initialRoute: '/read',
       routes: {
         '/': (context) => HomePage(),
         '/login': (context) => LoginPage(),
@@ -51,8 +45,12 @@ class MyApp extends StatelessWidget {
         '/newproject': (context) => CreateProjectDialog(),
         '/projectpages': (context) => ProjectPage(),
         '/teammembers': (context) => TeamMembersPage(),
-        '/settings': (context) => SettingsPage(),
+        '/account': (context) => AccountPage(),
         '/magremote': (context) => Magremote(),
+        '/read': (context) => ReadTrackerPage(
+              content:
+                  '/Users/saibabaalapati/Desktop/magremote/assets/sample_data.json',
+            )
       },
     );
   }

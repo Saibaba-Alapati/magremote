@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:magremote/viewModels/UserModel.dart';
 import 'Magremote.dart';
-import 'Signup.dart';
+import 'SignupPage.dart';
 import '../../services/Authservice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
