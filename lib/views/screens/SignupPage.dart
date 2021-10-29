@@ -17,13 +17,6 @@ class _SignupPageState extends State<SignupPage> {
   var firstname, lastname, gender, email, username, password;
   bool _obscureText = true;
   @override
-
-  // void _toggle() {
-  //   setState(() {
-  //     _obscureText = !_obscureText;
-  //   });
-  // }
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -49,9 +42,9 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
           SizedBox(height: size.height * 0.02),
-          Image.asset(
-            "/Users/saibabaalapati/Desktop/magremote/assets/login.png",
-            height: size.height * 0.30,
+          Image(
+            image: AssetImage("assets/images/login.png"),
+            height: size.height * 0.3,
           ),
           SizedBox(height: size.height * 0.02),
           Padding(
@@ -67,11 +60,11 @@ class _SignupPageState extends State<SignupPage> {
                 hintStyle: new TextStyle(color: Colors.grey[800]),
                 labelText: 'Firstname',
                 labelStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 contentPadding: EdgeInsets.all(5.0),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
               ),
               onChanged: (val) {
@@ -93,11 +86,11 @@ class _SignupPageState extends State<SignupPage> {
                 hintStyle: new TextStyle(color: Colors.grey[800]),
                 labelText: 'Lastname',
                 labelStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 contentPadding: EdgeInsets.all(5.0),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
               ),
               onChanged: (val) {
@@ -119,11 +112,11 @@ class _SignupPageState extends State<SignupPage> {
                 hintStyle: new TextStyle(color: Colors.grey[800]),
                 labelText: 'Username',
                 labelStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 contentPadding: EdgeInsets.all(5.0),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
               ),
               onChanged: (val) {
@@ -135,10 +128,10 @@ class _SignupPageState extends State<SignupPage> {
             padding: new EdgeInsets.fromLTRB(70, 0, 70, 10),
             child: DropdownButtonFormField<String>(
               iconDisabledColor: Colors.black,
-              iconEnabledColor: Colors.white,
+              iconEnabledColor: Colors.black,
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Colors.black),
                   ),
                   border: new OutlineInputBorder(
                       borderRadius:
@@ -156,7 +149,7 @@ class _SignupPageState extends State<SignupPage> {
                   .toList(),
               hint: Text(
                 "Gender",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
               onChanged: (value) {
                 setState(() {
@@ -180,11 +173,11 @@ class _SignupPageState extends State<SignupPage> {
                   hintStyle: new TextStyle(color: Colors.grey[800]),
                   labelText: 'Password',
                   labelStyle: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   contentPadding: EdgeInsets.all(5.0),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Colors.black),
                   ),
                   suffixIcon: IconButton(
                       icon: Icon(
@@ -192,7 +185,7 @@ class _SignupPageState extends State<SignupPage> {
                           _obscureText
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.white),
+                          color: Colors.black),
                       onPressed: () {
                         // Update the state i.e. toogle the state of passwordVisible variable
                         setState(() {
@@ -208,7 +201,7 @@ class _SignupPageState extends State<SignupPage> {
             padding: new EdgeInsets.fromLTRB(70, 0, 70, 10),
             child: TextField(
               decoration: new InputDecoration(
-                prefixIcon: Icon(Icons.mail, color: Colors.white),
+                prefixIcon: Icon(Icons.mail, color: Colors.black),
                 border: new OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
                     const Radius.circular(10.0),
@@ -218,11 +211,11 @@ class _SignupPageState extends State<SignupPage> {
                 hintStyle: new TextStyle(color: Colors.grey[800]),
                 labelText: 'Email',
                 labelStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 contentPadding: EdgeInsets.all(5.0),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
               ),
               onChanged: (val) {
@@ -249,7 +242,7 @@ class _SignupPageState extends State<SignupPage> {
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.red,
-                      textColor: Colors.white,
+                      textColor: Colors.black,
                       fontSize: 16.0);
                   if (val.data['success']) {
                     Navigator.push(

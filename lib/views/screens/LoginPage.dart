@@ -33,10 +33,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white12,
-      // body: CustomPaint(
-      //   painter: ShadePaint(),
-      //   child:
       body: ListView(
         children: [
           SizedBox(height: size.height * 0.01),
@@ -44,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Text(
               "LOGIN",
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
               ),
@@ -55,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Text(
               "Access account",
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 30.0,
               ),
             ),
@@ -67,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: new EdgeInsets.fromLTRB(10, 0, 5, 0),
               child: Text(
                 "OR",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: TextStyle(color: Colors.black, fontSize: 20),
               ),
             ),
           ),
@@ -78,25 +74,25 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(
                 "or Login with Email",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 20.0,
                 ),
               ),
             ),
           ),
-          Image.asset(
-            "/Users/saibabaalapati/Desktop/magremote/assets/login.png",
+          Image(
+            image: AssetImage("assets/images/login.png"),
             height: size.height * 0.3,
           ),
           SizedBox(height: size.height * 0.01),
           Padding(
             padding: new EdgeInsets.fromLTRB(70, 0, 70, 10),
             child: TextField(
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: new InputDecoration(
                 prefixIcon: Icon(
                   Icons.person,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 border: new OutlineInputBorder(
                   borderRadius: const BorderRadius.all(
@@ -107,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintStyle: new TextStyle(color: Colors.grey[800]),
                 labelText: 'Username',
                 labelStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey[800]!)),
@@ -121,12 +117,12 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
               padding: new EdgeInsets.fromLTRB(70, 0, 70, 10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 obscureText: _obscureText,
                 decoration: new InputDecoration(
                   prefixIcon: Icon(
                     Icons.lock_rounded,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   border: new OutlineInputBorder(
                     borderRadius: const BorderRadius.all(
@@ -134,18 +130,18 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   hintText: 'Enter your Password',
-                  hintStyle: new TextStyle(color: Colors.white),
+                  hintStyle: new TextStyle(color: Colors.black),
                   labelText: 'Password',
                   labelStyle: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   contentPadding: EdgeInsets.all(5.0),
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white)),
+                      borderSide: BorderSide(color: Colors.black)),
                   suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility : Icons.visibility_off,
-                        color: Colors.white,
+                        color: Colors.black,
                         // Theme.of(context).primaryColorDark
                       ),
                       onPressed: () {
@@ -194,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                         gravity: ToastGravity.BOTTOM,
                         timeInSecForIosWeb: 1,
                         backgroundColor: Colors.green,
-                        textColor: Colors.white,
+                        textColor: Colors.black,
                         fontSize: 16.0);
                     Navigator.push(
                       context,
@@ -231,7 +227,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.fromLTRB(110, 0, 0, 10),
             child: Text(
               "Dont have account?",
-              style: TextStyle(color: Colors.white, fontSize: 20.0),
+              style: TextStyle(color: Colors.black, fontSize: 20.0),
             ),
           ),
           Padding(
@@ -245,7 +241,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: new Text(
                 "Register",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.resolveWith<Color>(
