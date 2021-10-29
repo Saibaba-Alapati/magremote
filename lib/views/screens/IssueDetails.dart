@@ -11,11 +11,11 @@ class IssueDetails extends StatefulWidget {
 }
 
 class _IssueDetailsState extends State<IssueDetails> {
-  var title;
+  // var title;
   String _date = "Not set";
-  String _time = "Not set";
-  String _priority = "Not Set";
-  int iconnumber = 1;
+  // String _time = "Not set";
+  // String _priority = "Not Set";
+  // int iconnumber = 1;
   @override
   void initState() {
     super.initState();
@@ -25,359 +25,115 @@ class _IssueDetailsState extends State<IssueDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text("Fields"),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: Icon(
+          Icons.arrow_back,
+          color: Colors.black,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: Text("Done"),
+          ),
+        ],
       ),
       body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
-          Padding(
-            padding: new EdgeInsets.fromLTRB(70, 30, 70, 15),
-            child: TextField(
-              decoration: new InputDecoration(
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
+          Container(
+            height: 200,
+            margin: const EdgeInsets.only(
+                bottom: 6.0), //Same as `blurRadius` i guess
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.0),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.0, 1.0), //(x,y)
+                  blurRadius: 6.0,
                 ),
-                hintText: 'title',
-                hintStyle: new TextStyle(color: Colors.grey[800]),
-                labelText: 'Title',
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                ),
-                enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue)),
-                contentPadding: EdgeInsets.all(5.0),
-              ),
-              onChanged: (val) {
-                title = val;
-              },
+              ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(70, 15, 70, 15),
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextButton(
-                    style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: Colors.blue)))),
-                    onPressed: () {
-                      DatePicker.showDatePicker(context,
-                          theme: DatePickerTheme(
-                            containerHeight: 200.0,
-                          ),
-                          showTitleActions: true,
-                          minTime: DateTime(2000, 1, 1),
-                          maxTime: DateTime(2022, 12, 31), onConfirm: (date) {
-                        print('confirm $date');
-                        _date = '${date.year} - ${date.month} - ${date.day}';
-                        setState(() {});
-                      }, currentTime: DateTime.now(), locale: LocaleType.en);
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.date_range,
-                                      size: 15.0,
-                                    ),
-                                    Text(
-                                      " $_date",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15.0),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Text(
-                            "  Change",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 10.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // color: Colors.white10,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Ofspace Digital Agency Website UI",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  SizedBox(
-                    height: 10.0,
+                ),
+                Text(
+                  "A Digital Agency building functional, simple, human-centered branding, UX, UI & Front & Back End Development.",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 20,
                   ),
-                  TextButton(
-                    style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    side: BorderSide(color: Colors.blue)))),
-                    onPressed: () {
-                      DatePicker.showTimePicker(context,
-                          theme: DatePickerTheme(
-                            containerHeight: 200.0,
-                          ),
-                          showTitleActions: true, onConfirm: (time) {
-                        print('confirm $time');
-                        _time =
-                            '${time.hour} : ${time.minute} : ${time.second}';
-                        setState(() {});
-                      }, currentTime: DateTime.now(), locale: LocaleType.en);
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                              side: BorderSide(color: Colors.blue)))),
+                  onPressed: () {
+                    DatePicker.showDatePicker(context,
+                        theme: DatePickerTheme(
+                          containerHeight: 200.0,
+                        ),
+                        showTitleActions: true,
+                        minTime: DateTime(2000, 1, 1),
+                        maxTime: DateTime(2022, 12, 31), onConfirm: (date) {
+                      print('confirm $date');
+                      _date = '${date.year} - ${date.month} - ${date.day}';
                       setState(() {});
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.access_time,
-                                      size: 15.0,
-                                    ),
-                                    Text(
-                                      " $_time",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15.0),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Text(
-                            "Change",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 10.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(70, 0, 70, 15),
-            child: TextButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          side: BorderSide(color: Colors.blue)))),
-              onPressed: () {
-                _priorityModalBottomSheet(context);
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 50,
-                width: 200,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
+                    }, currentTime: DateTime.now(), locale: LocaleType.en);
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 50.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        iconreturn(_priority),
-                        Text(
-                          "$_priority",
-                          style: TextStyle(
-                              fontSize: 15.0, fontWeight: FontWeight.bold),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.date_range,
+                                    size: 15.0,
+                                  ),
+                                  Text(
+                                    " $_date",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.0),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(
-                          width: 60,
-                        ),
                         Text(
-                          "Change",
+                          "  Change",
                           style: TextStyle(
-                              fontSize: 10.0, fontWeight: FontWeight.bold),
-                        )
+                              fontWeight: FontWeight.bold, fontSize: 10.0),
+                        ),
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(70, 15, 70, 15),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 20),
-            ),
-            onPressed: () {},
-            child: const Text('Create'),
-          ),
+          )
         ],
       ),
     );
   }
-
-  void _priorityModalBottomSheet(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return Container(
-            child: new Wrap(
-              children: <Widget>[
-                new ListTile(
-                    leading: new Icon(
-                      Icons.arrow_upward,
-                      color: Colors.blue[900],
-                    ),
-                    title: new Text('Highest'),
-                    onTap: () {
-                      Navigator.pop(context);
-                      setState(() {
-                        _priority = "Highest";
-                      });
-                    }),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.arrow_upward,
-                    color: Colors.blue,
-                  ),
-                  title: new Text('High'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _priority = "High";
-                    });
-                  },
-                ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.arrow_upward,
-                    color: Colors.yellow,
-                  ),
-                  title: new Text('Medium'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _priority = "Medium";
-                    });
-                  },
-                ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.arrow_downward_rounded,
-                    color: Colors.blueAccent,
-                  ),
-                  title: new Text('Low'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _priority = "Low";
-                    });
-                  },
-                ),
-                new ListTile(
-                  leading: new Icon(
-                    Icons.arrow_downward_rounded,
-                    color: Colors.blue,
-                  ),
-                  title: new Text('Lowest'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {
-                      _priority = "Lowest";
-                    });
-                  },
-                ),
-              ],
-            ),
-          );
-        });
-  }
 }
-
-Widget iconreturn(String text) {
-  switch (text) {
-    case 'Highest':
-      return Icon(
-        Icons.arrow_upward_rounded,
-        color: Colors.blue[900],
-      );
-    case 'High':
-      return Icon(
-        Icons.arrow_upward_rounded,
-        color: Colors.blue,
-      );
-    case 'Medium':
-      return Icon(
-        Icons.arrow_upward_rounded,
-        color: Colors.yellow,
-      );
-    case 'Low':
-      return Icon(
-        Icons.arrow_downward_rounded,
-        color: Colors.blueAccent,
-      );
-    case 'Lowest':
-      return Icon(
-        Icons.arrow_downward_rounded,
-        color: Colors.blue,
-      );
-
-    default:
-      return Icon(Icons.arrow_upward);
-  }
-}
-//need a field for project
-//need a field for assignee
-//need a field for
-
-// Padding(
-//             padding: EdgeInsets.fromLTRB(70, 15, 70, 15),
-//             child: DropdownSearch<String>(
-//               mode: Mode.BOTTOM_SHEET,
-//               showClearButton: true,
-//               maxHeight: 350,
-//               dropDownButton: Icon(Icons.more_vert_rounded),
-//               dropdownSearchDecoration: InputDecoration(
-//                   labelStyle: TextStyle(color: Colors.white),
-//                   hintStyle: TextStyle(color: Colors.white),
-//                   enabledBorder: UnderlineInputBorder(
-//                     borderSide: BorderSide(color: Colors.white),
-//                   ),
-//                   border: new OutlineInputBorder(
-//                       borderRadius:
-//                           BorderRadius.all(const Radius.circular(10.0)))),
-//               items: ["Highest", "High", "Medium", "Low", 'Lowest'],
-//               label: "Priority",
-//               onChanged: print,
-//               selectedItem: "Lowest",
-//               popupBackgroundColor: Colors.white38,
-//               dropdownBuilderSupportsNullItem: true,
-//               showSelectedItem: true,
-//               popupShape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.only(
-//                   topLeft: Radius.circular(24),
-//                   topRight: Radius.circular(24),
-//                 ),
-//               ),
-//             ),
-//           ),
+//EFF1F6

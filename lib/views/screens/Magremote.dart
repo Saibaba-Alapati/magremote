@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magremote/views/screens/HomePage.dart';
 import 'package:magremote/views/screens/TeammembersPage.dart';
-import 'IssuesPage.dart';
+// import 'IssuesPage.dart';
 import 'ProjectsPage.dart';
 
 class Magremote extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MagremoteState extends State<Magremote> {
         children: <Widget>[
           HomePage(),
           ProjectsPage(),
-          IssuesPage(),
+          // IssuesPage(),
           TeamMembersPage(),
         ],
         index: _selectedItem,

@@ -20,23 +20,23 @@ String userToJson(List<User> data) =>
 class User {
   User({
     this.id,
-    required this.firstname,
-    required this.lastname,
-    required this.username,
-    required this.gender,
-    required this.email,
-    required this.password,
+    this.firstname,
+    this.lastname,
+    this.username,
+    this.gender,
+    this.email,
+    this.password,
     this.createdAt,
     this.updatedAt,
   });
 
   int? id;
-  String firstname;
-  String lastname;
-  String username;
-  String gender;
-  String email;
-  String password;
+  String? firstname;
+  String? lastname;
+  String? username;
+  String? gender;
+  String? email;
+  String? password;
   DateTime? createdAt;
   DateTime? updatedAt;
 

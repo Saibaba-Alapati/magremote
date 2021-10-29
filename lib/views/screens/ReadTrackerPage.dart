@@ -8,10 +8,6 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
 
-typedef DemoContentBuilder = Widget Function(
-    BuildContext context, QuillController? controller);
-
-// Common scaffold for all examples.
 class ReadTrackerPage extends StatefulWidget {
   const ReadTrackerPage({
     required this.content,
@@ -107,95 +103,35 @@ class _ReadTrackerPageState extends State<ReadTrackerPage> {
         ],
       ),
       body: _buildWelcomeEditor(context),
-      bottomNavigationBar: Container(
-        height: 100,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 10.0,
-                      ),
-                    ]),
-                child: Icon(Icons.alternate_email_outlined),
-              ),
-              Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 10.0,
-                      ),
-                    ]),
-                child: Icon(Icons.attach_file_outlined),
-              ),
-              Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 10.0,
-                      ),
-                    ]),
-                child: RotationTransition(
-                  turns: AlwaysStoppedAnimation(-15 / 360),
-                  child: Icon(
-                    Icons.send,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
   Widget _buildWelcomeEditor(BuildContext context) {
     var quillEditor = QuillEditor(
-        controller: _controller!,
-        scrollController: ScrollController(),
-        scrollable: true,
-        focusNode: _focusNode,
-        autoFocus: true,
-        showCursor: !_edit,
-        readOnly: _edit,
-        expands: false,
-        padding: EdgeInsets.zero,
-        placeholder: 'Add content',
-        customStyles: DefaultStyles(
-          h1: DefaultTextBlockStyle(
-              const TextStyle(
-                fontSize: 32,
-                color: Colors.black,
-                height: 1.15,
-                fontWeight: FontWeight.w300,
-              ),
-              const Tuple2(16, 0),
-              const Tuple2(0, 0),
-              null),
-          sizeSmall: const TextStyle(fontSize: 9),
-        ));
+      controller: _controller!,
+      scrollController: ScrollController(),
+      scrollable: true,
+      focusNode: _focusNode,
+      autoFocus: true,
+      showCursor: !_edit,
+      readOnly: _edit,
+      expands: false,
+      padding: EdgeInsets.zero,
+      placeholder: 'Add content',
+      customStyles: DefaultStyles(
+        h1: DefaultTextBlockStyle(
+            const TextStyle(
+              fontSize: 32,
+              color: Colors.black,
+              height: 1.15,
+              fontWeight: FontWeight.w300,
+            ),
+            const Tuple2(16, 0),
+            const Tuple2(0, 0),
+            null),
+        sizeSmall: const TextStyle(fontSize: 9),
+      ),
+    );
     return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -240,7 +176,8 @@ class _ReadTrackerPageState extends State<ReadTrackerPage> {
                     children: [
                       Text(
                         "Assigned to",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -268,7 +205,8 @@ class _ReadTrackerPageState extends State<ReadTrackerPage> {
                     children: [
                       Text(
                         "Duedate",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -298,7 +236,8 @@ class _ReadTrackerPageState extends State<ReadTrackerPage> {
                     children: [
                       Text(
                         "Enddate",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -474,7 +413,77 @@ class _ReadTrackerPageState extends State<ReadTrackerPage> {
                 ),
               ),
             ),
-          )
+          ),
+          Container(
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(0.0, 1.0), //(x,y)
+                            blurRadius: 10.0,
+                          ),
+                        ]),
+                    child: Icon(Icons.alternate_email_outlined),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(0.0, 1.0), //(x,y)
+                            blurRadius: 10.0,
+                          ),
+                        ]),
+                    child: Icon(Icons.attach_file_outlined),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
+                      child: TextField(
+                        decoration:
+                            new InputDecoration.collapsed(hintText: 'Username'),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Color(0xff1820e5),
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: Offset(0.0, 1.0), //(x,y)
+                            blurRadius: 10.0,
+                          ),
+                        ]),
+                    child: RotationTransition(
+                      turns: AlwaysStoppedAnimation(-15 / 360),
+                      child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

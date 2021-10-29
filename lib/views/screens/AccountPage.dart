@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'ChangePasswordPage.dart';
+import 'PersonalInformationPage.dart';
+
 class AccountPage extends StatefulWidget {
   @override
   _AccountPageState createState() => _AccountPageState();
@@ -15,30 +18,28 @@ class _AccountPageState extends State<AccountPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Column(
-            children: [
-              Text("Name"),
-              Text("Email"),
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    SizedBox(width: 20),
-                    Text("change password"),
-                  ],
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PersonalInformationPage(),
                 ),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    SizedBox(width: 20),
-                    Text("settings"),
-                  ],
+              );
+            },
+            child: Text("Personal Information"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangePasswordPage(),
                 ),
-              )
-            ],
-          )
+              );
+            },
+            child: Text("Change Password"),
+          ),
         ],
       ),
     );

@@ -165,19 +165,29 @@ class _LoginPageState extends State<LoginPage> {
                 AuthService().login(username, password).then((val) async {
                   List<User> results = userFromJson(val);
                   User loginResults = results[0];
-                  // print(loginResults.email);
                   int id =
                       (loginResults.id != null) ? (loginResults.id) as int : -1;
+                  String username = (loginResults.username != null)
+                      ? (loginResults.username) as String
+                      : "";
+                  String lastname = (loginResults.lastname != null)
+                      ? (loginResults.lastname) as String
+                      : "";
+                  String firstname = (loginResults.firstname != null)
+                      ? (loginResults.username) as String
+                      : "";
+                  String email = (loginResults.email != null)
+                      ? (loginResults.username) as String
+                      : "";
                   if (id > 0) {
                     // ignore: invalid_use_of_visible_for_testing_member
                     SharedPreferences.setMockInitialValues({});
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
-
-                    prefs.setString('username', loginResults.username);
-                    prefs.setString('firstname', loginResults.firstname);
-                    prefs.setString('lastname', loginResults.lastname);
-                    prefs.setString('email', loginResults.email);
+                    prefs.setString('username', username);
+                    prefs.setString('firstname', firstname);
+                    prefs.setString('lastname', lastname);
+                    prefs.setString('email', email);
                     prefs.setInt('user_id', id);
                     Fluttertoast.showToast(
                         msg: 'Authenticated',

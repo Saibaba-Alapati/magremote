@@ -10,9 +10,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white10,
+        backgroundColor: Color(0xffeff1f6),
         appBar: AppBar(
-          backgroundColor: Colors.white24,
           title: Padding(
             padding: new EdgeInsets.fromLTRB(5, 0, 0, 0),
             child: Text(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/ProjectsPage.dart';
-import '../screens/IssuesPage.dart';
+// import '../screens/IssuesPage.dart';
 
 class SideDrawer extends StatefulWidget {
   @override
@@ -40,10 +40,10 @@ class _SideDrawerState extends State<SideDrawer> {
           leading: Icon(Icons.report_problem),
           title: Text("Issues"),
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => IssuesPage()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => IssuesPage()),
+            // );
           },
         ),
         ListTile(

@@ -9,7 +9,7 @@ import 'views/screens/LoginPage.dart';
 import 'views/screens/HomePage.dart';
 import 'views/screens/AccountPage.dart';
 import 'views/screens/ProjectsPage.dart';
-import 'views/screens/IssuesPage.dart';
+// import 'views/screens/IssuesPage.dart';
 import 'views/screens/TeammembersPage.dart';
 import 'views/screens/SignupPage.dart';
 
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.lightBlue[800],
@@ -33,12 +34,12 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      initialRoute: '/read',
+      initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
-        '/issues': (context) => IssuesPage(),
+        // '/issues': (context) => IssuesPage(),
         '/newissue': (context) => EditorPage(),
         '/issuedetails': (context) => IssueDetails(),
         '/projects': (context) => ProjectsPage(),

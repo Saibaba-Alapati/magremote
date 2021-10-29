@@ -6,7 +6,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-List<TrackerComment> userFromJson(Response<dynamic> str) {
+List<TrackerComment> trackerCommentFromJson(Response<dynamic> str) {
   final value = json.decode(str.toString())["results"];
   List<TrackerComment> comments = [];
   for (var item in value) {
