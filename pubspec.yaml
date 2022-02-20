@@ -26,7 +26,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   uuid: ^3.0.4
   fluttertoast: ^8.0.7
-  flutter_quill: ^1.7.0
+  flutter_quill: ^4.0.4
   path_provider: ^2.0.2
   tuple: ^2.0.0
   flutter_datetime_picker:
